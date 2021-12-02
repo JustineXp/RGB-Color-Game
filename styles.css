@@ -13,6 +13,10 @@ h1 {
   margin: 0 auto;
 }
 
+span {
+  color: white;
+}
+
 .square {
   background: purple;
   width: 30%;
