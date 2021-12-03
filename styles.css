@@ -13,10 +13,6 @@ h1 {
   margin: 0 auto;
 }
 
-span {
-  color: white;
-}
-
 .square {
   background: purple;
   width: 30%;
@@ -24,4 +20,15 @@ span {
   padding-bottom: 30%;
   float: left;
   border-radius: 10px;
+}
+
+#stripe {
+  background-color: white;
+  height: 30px;
+  color: black;
+}
+
+.selected {
+  background-color: blue;
+  color: white;
 }

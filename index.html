@@ -8,16 +8,19 @@
 </head>
 <body>
     <h1>The <span id="colorDisplay">RGB</span> Color</h1>
-    <div>
+    <div id="stripe">
+        <button id="reset">New Colors</button>
         <span id="messageDisplay"></span>
+        <button id="easy">EASY</button>
+        <button class="selected" id="hard">HARD</button>
     </div>
     <div id="container">
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+        <div id="uppersquares" class="square"></div>
+        <div id="uppersquares" class="square"></div>
+        <div id="uppersquares" class="square"></div>
+        <div id="lowersquares" class="square"></div>
+        <div id="lowersquares" class="square"></div>
+        <div id="lowersquares" class="square"></div>
     </div>
     <script src="./script.js"></script>
 </body>
