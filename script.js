@@ -82,7 +82,21 @@ function generateColors(num) {
 
 //RESET BUTTON LOGIC
 resetButton.addEventListener("click", function () {
-  resetGame();
+  //generate new colors
+  colors = generateColors(numSquares);
+  //pick a new color
+  pickedColor = pickColor(numSquares);
+  //display pucked color
+  colorDisplay.textContent = pickedColor;
+  //display new set of colors
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].style.background = colors[i];
+  }
+  //reset h1 background
+  h1.style.background = "#232323";
+  resetButton.textContent = "New Colors";
+
+  console.log(colors);
 });
 
 //EASY MODE LOGIC
@@ -90,7 +104,7 @@ easyButtton.addEventListener("click", function () {
   numSquares = 3;
   easyButtton.classList.add("selected");
   hardButtton.classList.remove("selected");
-  console.log("easy utton clicked");
+  console.log("Easy button clicked");
 
   //generate a set of 3 random colors
   colors = generateColors(numSquares);
@@ -113,28 +127,24 @@ easyButtton.addEventListener("click", function () {
 hardButtton.addEventListener("click", function () {
   easyButtton.classList.remove("selected");
   hardButtton.classList.add("selected");
-  console.log("hard button clicked");
+  console.log("Hard Button Pressed");
+
+  numSquares = 6;
+
+  //generate a set of 6 random colors
+  colors = generateColors(numSquares);
+
+  //pick a random color
+  pickedColor = pickColor(numSquares);
+
+  //display the selected color on the Color Display
+  colorDisplay.textContent = pickedColor;
+
+  //display the 6 random colors on the squares
   for (let i = 0; i < squares.length; i++) {
     squares[i].style.background = colors[i];
     squares[i].style.display = "block";
   }
   console.log(colors);
-  resetGame();
+  console.log(pickedColor);
 });
-
-//FUNCTION TO RESET THE GAME LOGIC
-function resetGame() {
-  //generate new colors
-  colors = generateColors(6);
-  //pick a new color
-  pickedColor = pickColor(6);
-  //display pucked color
-  colorDisplay.textContent = pickedColor;
-  //display new set of colors
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].style.background = colors[i];
-  }
-  //reset h1 background
-  h1.style.background = "#232323";
-  resetButton.textContent = "New Colors";
-}
