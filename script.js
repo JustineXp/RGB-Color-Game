@@ -27,14 +27,14 @@ for (let i = 0; i < squares.length; i++) {
   //adding event listeners to the squares
   squares[i].addEventListener("click", function () {
     let clickedColor = this.style.background;
-
+    colorDisplay.textContent = clickedColor;
     if (clickedColor === pickedColor) {
       console.log(clickedColor + " Correct Color Picked");
       message.textContent = "Correct";
       //make all the squares have the same color if color picked is correct
       changeColors(pickedColor);
       h1.style.background = pickedColor;
-      resetButton.textContent = "Play Again";
+      resetButton.textContent = "Play Again ?";
     } else {
       console.log(clickedColor + " Wrong Color Selected");
       this.style.background = "#232323";
@@ -93,8 +93,9 @@ resetButton.addEventListener("click", function () {
     squares[i].style.background = colors[i];
   }
   //reset h1 background
-  h1.style.background = "#232323";
+  h1.style.background = "steelblue";
   resetButton.textContent = "New Colors";
+  message.textContent = "Guess a Color : ";
 
   console.log(colors);
 });
@@ -105,6 +106,7 @@ easyButtton.addEventListener("click", function () {
   easyButtton.classList.add("selected");
   hardButtton.classList.remove("selected");
   console.log("Easy button clicked");
+  message.textContent = "Guess a Color : ";
 
   //generate a set of 3 random colors
   colors = generateColors(numSquares);
@@ -125,6 +127,7 @@ easyButtton.addEventListener("click", function () {
 
 //HARD MODE LOGIC BUTTON
 hardButtton.addEventListener("click", function () {
+  message.textContent = "Guess a Color : ";
   easyButtton.classList.remove("selected");
   hardButtton.classList.add("selected");
   console.log("Hard Button Pressed");

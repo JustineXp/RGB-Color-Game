@@ -2,10 +2,17 @@ body {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #232323;
+  margin: 0;
+  font-family: Montserrat;
 }
 
 h1 {
   color: white;
+  background-color: steelblue;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: normal;
+  padding: 20px 0;
 }
 
 #container {
@@ -20,15 +27,45 @@ h1 {
   padding-bottom: 30%;
   float: left;
   border-radius: 10px;
+  transition: background, 0.5s;
+  -webkit-transition: background, 0.5s;
+  -moz-transition: background, 0.5s;
 }
 
 #stripe {
   background-color: white;
   height: 30px;
   color: black;
+  margin-bottom: 20px;
+}
+
+#messageDisplay {
+  display: inline-block;
+  width: 20%;
 }
 
 .selected {
-  background-color: blue;
+  background-color: steelblue;
   color: white;
+}
+
+#colorDisplay {
+  font-size: 150%;
+}
+
+button {
+  border: none;
+  background: none;
+  height: 100%;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: steelblue;
+  transition: all, 0.5s;
+  -webkit-transition: all, 0.5s;
+  -moz-transition: all, 0.5s;
+}
+
+button:hover {
+  color: white;
+  background: steelblue;
 }
