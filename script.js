@@ -11,9 +11,55 @@ var message = document.querySelector("#messageDisplay");
 var resetButton = document.querySelector("#reset");
 var easyButtton = document.getElementById("easy");
 var hardButtton = document.getElementById("hard");
+var modeButtons = document.querySelectorAll(".mode");
 var h1 = document.querySelector("h1");
 var colors = generateColors(numSquares);
 var pickedColor = pickColor(colors.length);
+
+init();
+function init() {
+  reset();
+}
+
+//mode buttons logic
+for (let i = 0; i < modeButtons.length; i++) {
+  //add eventlistener to the mode buttons
+  modeButtons[i].addEventListener("click", function () {
+    modeButtons[0].classList.remove("selected");
+    modeButtons[1].classList.remove("selected");
+    this.classList.add("selected");
+    if (this.textContent === "Easy") {
+      numSquares = 3;
+      reset();
+    } else {
+      numSquares = 6;
+      reset();
+    }
+  });
+}
+
+//RESET FUNCTION
+function reset() {
+  h1.style.background = "steelblue";
+  resetButton.textContent = "New Colors";
+  message.textContent = "Guess a Color : ";
+
+  //generate random colors
+  colors = generateColors(numSquares);
+  //pick a random color
+  pickedColor = pickColor(numSquares);
+  //set picked color to the display text
+  colorDisplay.textContent = pickedColor;
+  //show the selected color squares
+  for (let i = 0; i < squares.length; i++) {
+    if (colors[i]) {
+      squares[i].style.display = "block";
+      squares[i].style.background = colors[i];
+    } else {
+      squares[i].style.display = "none";
+    }
+  }
+}
 
 //LOGIC DEVELOPMENT
 
@@ -30,7 +76,7 @@ for (let i = 0; i < squares.length; i++) {
     colorDisplay.textContent = clickedColor;
     if (clickedColor === pickedColor) {
       console.log(clickedColor + " Correct Color Picked");
-      message.textContent = "Correct";
+      message.textContent = "Awesome You Got it Correct";
       //make all the squares have the same color if color picked is correct
       changeColors(pickedColor);
       h1.style.background = pickedColor;
@@ -82,72 +128,5 @@ function generateColors(num) {
 
 //RESET BUTTON LOGIC
 resetButton.addEventListener("click", function () {
-  //generate new colors
-  colors = generateColors(numSquares);
-  //pick a new color
-  pickedColor = pickColor(numSquares);
-  //display pucked color
-  colorDisplay.textContent = pickedColor;
-  //display new set of colors
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].style.background = colors[i];
-  }
-  //reset h1 background
-  h1.style.background = "steelblue";
-  resetButton.textContent = "New Colors";
-  message.textContent = "Guess a Color : ";
-
-  console.log(colors);
-});
-
-//EASY MODE LOGIC
-easyButtton.addEventListener("click", function () {
-  numSquares = 3;
-  easyButtton.classList.add("selected");
-  hardButtton.classList.remove("selected");
-  console.log("Easy button clicked");
-  message.textContent = "Guess a Color : ";
-
-  //generate a set of 3 random colors
-  colors = generateColors(numSquares);
-  //pick a color from the three
-  pickedColor = pickColor(colors.length);
-  //display the selected color on the Color Display
-  colorDisplay.textContent = pickedColor;
-  //Display the 3 random colors
-  for (let i = 0; i < squares.length; i++) {
-    if (colors[i]) {
-      squares[i].style.background = colors[i];
-    } else {
-      squares[i].style.display = "none";
-    }
-  }
-  console.log(colors);
-});
-
-//HARD MODE LOGIC BUTTON
-hardButtton.addEventListener("click", function () {
-  message.textContent = "Guess a Color : ";
-  easyButtton.classList.remove("selected");
-  hardButtton.classList.add("selected");
-  console.log("Hard Button Pressed");
-
-  numSquares = 6;
-
-  //generate a set of 6 random colors
-  colors = generateColors(numSquares);
-
-  //pick a random color
-  pickedColor = pickColor(numSquares);
-
-  //display the selected color on the Color Display
-  colorDisplay.textContent = pickedColor;
-
-  //display the 6 random colors on the squares
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].style.background = colors[i];
-    squares[i].style.display = "block";
-  }
-  console.log(colors);
-  console.log(pickedColor);
+  reset();
 });
